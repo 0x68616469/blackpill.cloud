@@ -21,4 +21,4 @@ fi
 
 docker compose \
   -f $DOCKER_COMPOSE_FILE \
-  up --detach --build --remove-orphans $@
+  up --build --remove-orphans $@
