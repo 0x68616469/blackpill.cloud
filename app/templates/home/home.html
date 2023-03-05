@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlackPill</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menu.css') }}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+<body>
+    {% include 'include/nav.html' %}
+    {% include 'include/account.html' %}
+    
+    <main>
+        {% include 'include/notifications.html' %}
+        <img src="{{ url_for('static', filename='src/logo.svg') }}" class="logo" />
+        <h1 class="title">BlackPill.cloud</h1>
+        <div style="padding-bottom: 20px;"></div>
+
+        <p>
+            BlackPill offers you multiple useful tools to make your Nostr life easier!
+            <br>NIP-05, Lightning address forwarding, private relay, automatic nostr settings backup and more.. ⚡
+            <br><br>Here is some of them :
+        </p>
+        <div style="padding-bottom: 40px;"></div>
+
+        <div class="flex-container">
+
+            <div class="flex-service">
+                <i class='bx bx-badge-check' ></i>
+                <h3>NIP-05</h3>
+                <div style="padding-bottom: 10px;"></div>
+
+                <p>NIP-05 is a human-readable identifier for your public key.<br> Your friends and followers will find your profile on Nostr easier & quicker.<br> It will also provide you with a verified checkmark on most of the Nostr clients.</p>
+                <div style="padding-bottom: 20px;"></div>
+
+                <a href="{{url_for('dashboard.dashboard_page')}}"><button class="small">Get my NIP-05</button></a>
+            </div>
+
+            <div class="flex-service">
+                <i class='bx bxs-zap' ></i>
+                <h3>Lightning Address forwarding </h3>
+                <div style="padding-bottom: 10px;"></div>
+
+                <p>BlackPill's members can create a lightning address, so the payments sent to their custom BlackPill's lightning address will be forwarded to their existing Lightning Address.<br> They can also choose to use their NIP-05 ID, one address for both identity and payment.</p>
+                <div style="padding-bottom: 20px;"></div>
+
+                <a href="{{url_for('dashboard.dashboard_page')}}"><button class="small">Forward my lightning address</button></a>
+            </div>
+
+            <div class="flex-service">
+                <i class='bx bx-server'></i>
+                <h3>Private relay</h3>
+                <div style="padding-bottom: 10px;"></div>
+
+                <p>BlackPill's members are whitelisted on relay.blackpill.cloud !<br>A private relay is a great way to make sure that your notes are always available.</p>
+                <div style="padding-bottom: 20px;"></div>
+                <button class="small">Access the relay</button>
+            </div>
+
+            <div class="flex-service">
+                <i class='bx bx-image-add' ></i>
+                <h3>Media uploader</h3>
+                <div style="padding-bottom: 10px;"></div>
+
+                <p>Upload, edit, and delete your photos and gifs quickly with our app.<br> Get a quick and short link to share with your followers on Nostr. Metadata will be automatically removed for privacy.</p>
+                <div style="padding-bottom: 20px;"></div>
+
+                <a href="{{url_for('media_uploader.media')}}"><button class="small">Upload something</button></a>
+            </div>
+
+            <div class="flex-service">
+                <i class='bx bx-key'></i>
+                <h3>Key Converter</h3>
+                <div style="padding-bottom: 10px;"></div>
+
+                <p>Convert a nostr public key to an old-style hex key !</p>
+                <div style="padding-bottom: 20px;"></div>
+
+                <a href="{{url_for('home.key_converter')}}"><button class="small">Convert your keys</button></a>
+            </div>
+
+            <div class="flex-service">
+                <i class='bx bx-id-card'></i>
+                <h3>Explore</h3>
+                <div style="padding-bottom: 10px;"></div>
+
+                <p>Every member is listed on the explore section, making it easy to find other users to follow and talk with.</p>
+                <div style="padding-bottom: 20px;"></div>
+
+                <a href="{{url_for('home.explore')}}"><button class="small">Explore</button></a>
+            </div>
+        </div>
+
+    </main>
+</body>
+<script type="text/javascript" src="{{ url_for('static', filename='js/blackpill_logo.js') }}"></script>
+</html>

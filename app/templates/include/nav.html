@@ -1,0 +1,50 @@
+<p class="nav-open" onclick="document.getElementById('nav').classList.add('menu_active')"><i class='bx bx-menu' ></i> menu</p>
+
+<div id="nav" class="preload menu-scrollable menu nav">
+    <p class="menu-close" onclick="document.getElementById('nav').classList.remove('menu_active')"><i class='bx bxs-x-square'></i></p>
+    <ol>
+        <li class="menu-item {% if request.path == url_for('home.home_page') %}active{%endif%}"><a href="{{url_for('home.home_page')}}">Home</a></li>
+        {% if current_user.is_authenticated %}
+        {% if current_user.is_member %}
+        <li class="menu-item {% if request.path == url_for('dashboard.dashboard_page') %}active{%endif%}"><a href="{{url_for('dashboard.dashboard_page')}}">Dashboard</a></li>
+        {% else %}
+        <li class="menu-item {% if request.path == url_for('membership.membership_page') %}active{%endif%}"><a href="{{url_for('membership.membership_page')}}">Become a member</a></li>
+        {% endif %}
+        {% else %}
+        <li class="menu-item {% if request.path == url_for('membership.membership_page') %}active{%endif%}"><a href="{{url_for('membership.membership_page')}}">Become a member</a></li>
+        {% endif %}
+        <li class="menu-item {% if request.path == url_for('home.explore') %}active{%endif%}"><a href="{{url_for('home.explore')}}">Explore</a></li>
+        <li class="menu-item">
+            <a href="{{url_for('home.home_page')}}">Tools</a>
+            <ol class="sub-menu">
+                <li class="menu-item"><a href="{{ url_for('dashboard.dashboard_page') }}">NIP-05</a></li>
+                <li class="menu-item"><a href="{{ url_for('dashboard.dashboard_page') }}">Ln Address Forwarding</a></li>
+                <li class="menu-item {% if request.path == url_for('media_uploader.media') %}active{%endif%}"><a href="{{ url_for('media_uploader.media') }}">Media Uploader</a></li>
+                <li class="menu-item {% if request.path == url_for('home.key_converter') %}active{%endif%}"><a href="{{ url_for('home.key_converter') }}">Key Converter</a></li>
+            </ol>
+        </li>
+        <li class="menu-item">
+            <a href="{{url_for('home.home_page')}}">In coming..</a>
+            <ol class="sub-menu">
+                <li class="menu-item"><a href="">Nostr Follower backup</a></li>
+                <li class="menu-item"><a href="">Nostr Settings backup</a></li>
+            </ol>
+        </li>
+        <li class="menu-item {% if request.path == url_for('home.rules') %}active{%endif%}"><a href="{{url_for('home.rules')}}">Rules</a></li>
+        <li class="menu-item {% if request.path == url_for('home.contact') %}active{%endif%}"><a href="{{url_for('home.contact')}}">Contact</a></li>
+    </ol>
+    <a href="#endnav"><p id="overflow" class="menu-overflow"><i class='bx bxs-down-arrow-alt'></i></p></a>
+    <div id="endnav"></div>
+</div>
+
+<script type="text/javascript">
+    menu_nav = document.getElementById("nav");
+
+    if(menu_nav.scrollHeight > menu_nav.clientHeight || menu_nav.scrollWidth > menu_nav.clientWidth){
+        document.getElementById('overflow').style.display = "unset";
+    }
+    setTimeout(
+        function() {
+        document.getElementById('nav').classList.remove("preload");
+    }, 100);
+</script>

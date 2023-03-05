@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menu.css') }}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+<body>
+
+    {% include 'include/nav.html' %}
+    {% include 'include/account.html' %}
+    
+    <main>
+        {% include 'include/notifications.html' %}
+        <img src="{{ url_for('static', filename='src/logo.svg') }}" class="logo-small" />
+        <h1 class="title">Explore</h1>
+        <div style="padding-bottom: 30px;"></div>
+
+        <div class="flex-container">
+        {% for member in members %}
+
+            <div class="flex-user">
+                <h3 class="title">{{member.username}}</h3>
+                <p><span>#{{member.id}} - <i class='bx bx-badge-check' ></i></span></p>
+                <div style="padding-bottom: 10px;"></div>
+                {% if member.nip %}
+                <p>NIP-05 : <span>{{member.nip.username}}@blackpill.cloud</span></p>
+                <p>Hex public key : <span class="key">{{member.nip.hex}}</span></p>
+                {% endif %}
+                {% if member.lnaddr %}
+                <p>Lightning Address : <span>{{member.lnaddr.username}}@blackpill.cloud</span></p>
+                {% endif %}
+                <div style="padding-bottom: 20px;"></div>
+            </div>
+            {% endfor %}
+        </div>
+        <div style="padding-bottom: 20px;"></div>
+
+        <p>
+            {% if members.has_prev %}
+            <a href="{{ url_for('home.explore_page', page=page-1) }}">Previous page</a> |
+            {% endif %}
+            {{page}}/{{total}}
+            {% if members.has_next %}
+            | <a href="{{ url_for('home.explore_page', page=page+1) }}">Next page</a>
+            {% endif %}
+        </p>
+
+    </main>
+</body>
+<script type="text/javascript" src="{{ url_for('static', filename='js/blackpill_logo.js') }}"></script>
+</html>

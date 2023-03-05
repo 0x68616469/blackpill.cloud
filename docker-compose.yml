@@ -1,0 +1,9 @@
+services:
+  app:
+    build: .
+    container_name: blackpill-container
+    command: gunicorn -w 4 -b 0.0.0.0:80 'app:create_app()'
+    ports:
+      - 80:80
+    volumes:
+        - .:/code

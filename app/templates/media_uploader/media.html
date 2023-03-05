@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Uploader</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menu.css') }}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+    {% include 'include/nav.html' %}
+    {% include 'include/account.html' %}
+
+    <main>
+        {% include 'include/notifications.html' %}
+  
+        <div class="menu account menu_active" style="z-index: 10;">
+            <img src="{{ url_for('static', filename='src/logo.svg') }}" class="logo-small" />
+            <h3 class="title">Upload file</h3>
+            <br>
+
+            <form method="POST" action="{{url_for('media_uploader.new_media')}}" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+                {{ form.image }}
+                <button type="submit">send</button>
+            </form>
+            <br>
+        </div>
+    </main>
+</body>
+<script type="text/javascript" src="{{ url_for('static', filename='js/blackpill_logo.js') }}"></script>
+</html>

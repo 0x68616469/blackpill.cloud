@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Uploader</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menu.css') }}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+    {% include 'include/nav.html' %}
+    {% include 'include/account.html' %}
+
+    <main>
+        {% include 'include/notifications.html' %}
+  
+        <div class="menu account menu_active" style="z-index: 10;">
+            <img src="{{ url_for('static', filename='src/logo.svg') }}" class="logo-small" />
+            <h3 class="title">{{image.path}}</h3>
+            <br>
+            <img src="{{url_for('media_uploader.get_media', path=image.path)}}" class="media" />
+            <p>Link: <span id="link" class="small">https://blackpill.cloud/m/{{image.path}}</span></p>
+            <p class="small">Size: {{image.size}}Mb</p>
+            <div style="padding-bottom: 10px;"></div>
+            <button onClick="copyLink()" id="copyButton">Copy the link</button>
+            <br>
+            <p class="text small"><a href="{{url_for('media_uploader.media')}}">Upload another one</a></p>
+        </div>
+        <script type="text/javascript">
+            function copyLink() {
+                var copyButton = document.getElementById("copyButton");
+                var copyText = document.getElementById("link");
+                navigator.clipboard.writeText(copyText.innerText);
+                copyButton.innerText= "Copied";
+              }
+        </script>
+    </main>
+</body>
+<script type="text/javascript" src="{{ url_for('static', filename='js/blackpill_logo.js') }}"></script>
+</html>

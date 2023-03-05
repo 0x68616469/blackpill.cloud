@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menu.css') }}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+<body>
+
+    {% include 'include/nav.html' %}
+    {% include 'include/account.html' %}
+    
+    <main>
+        {% include 'include/notifications.html' %}
+        <img src="{{ url_for('static', filename='src/logo.svg') }}" class="logo-small" />
+        <h1 class="title">Dashboard</h1>
+        <div style="padding-bottom: 30px;"></div>
+        <a href="{{url_for('dashboard.dashboard_edit')}}"><button>Edit</button></a>
+        <div style="padding-bottom: 30px;"></div>
+        <p>Login as : <span>{{current_user.username}}</span></p>
+        <br>
+        {% if current_user.nip %}
+        <p>NIP-05 : <span>{{current_user.nip.username}}</span>@blackpill.cloud</p>
+        <p>Hex key : <span>{{current_user.nip.hex}}</span></p>
+        {% else %}
+        <p>NIP-05 : <span>none</span></p>
+        <p>Hex key : <span>none</span></p>
+        {% endif %}
+        {% if current_user.lnaddr %}
+        <p>Ln Address Forwarding : <span>{{current_user.lnaddr.username}}</span>{% if current_user.lnaddr.username %}@blackpill.cloud{%endif%} -> <span>{{current_user.lnaddr.forward_to}}</span></p>
+        {%else%}
+        <p>Ln Address Forwarding : <span>none</span></p>
+        {%endif%}
+        <div style="padding-bottom: 30px;"></div>
+        <h2>Media uploaded :</h2>
+        <div style="padding-bottom: 30px;"></div>
+        {% if current_user.images %}
+        <div class="flex-container">
+            {% for image in current_user.images %}
+            <div class="flex-image">
+                <img src="{{url_for('media_uploader.get_media', path=image.path)}}" class="media" />
+                <p class="link small"><span>https://blackpill.cloud/m/{{image.path}}</span></p>
+                <button id="{{loop.index}}" class="small" onClick="copyLink('{{loop.index}}')">Copy link</button>
+            </div>
+            {% endfor %}
+        </div>
+        <script type="text/javascript">
+            var link = document.getElementsByClassName("link");
+            var copyLink = function(value) {
+                var copyButton = document.getElementById(value.toString());
+                var copyText = link[value-1];
+                navigator.clipboard.writeText(copyText.innerText);
+                copyButton.innerText= "Copied";
+            };
+        </script>
+        {% else %}
+        <div style="padding-bottom: 30px;"></div>
+        <p>Nothing uploaded yet ! Check out the <a href="{{url_for('media_uploader.media')}}">Media Uploader</a></p>
+        <div style="padding-bottom: 30px;"></div>
+        {% endif %}
+
+    </main>
+</body>
+<script type="text/javascript" src="{{ url_for('static', filename='js/blackpill_logo.js') }}"></script>
+</html>

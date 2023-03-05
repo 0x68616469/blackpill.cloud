@@ -1,0 +1,8 @@
+test.py
+app/settings.py
+app/make_admin.py
+app/media/*
+instance/
+
+.DS_Store
+**/__pycache__/

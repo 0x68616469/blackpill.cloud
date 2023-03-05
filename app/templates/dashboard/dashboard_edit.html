@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Edit</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menu.css') }}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+<body>
+
+    {% include 'include/nav.html' %}
+    {% include 'include/account.html' %}
+    
+    <main>
+        {% include 'include/notifications.html' %}
+        <img src="{{ url_for('static', filename='src/logo.svg') }}" class="logo-small" />
+        <h1 class="title">Dashboard Edit</h1>
+
+        <div style="padding-bottom: 30px;"></div>
+        <p>Login as : <span>{{current_user.username}}</span></p>
+
+        <div style="padding-bottom: 30px;"></div>
+        <h3 class="title">NIP-05 :</h3>
+        <div style="padding-bottom: 30px;"></div>
+        <form method="POST" action="{{ url_for('dashboard.change_nip') }}">
+            {{ nip_form.hidden_tag() }}
+            <label>{{ nip_form.username.label }} :</label><br>
+            {{ nip_form.username }}<p style="display: inline;">@blackpill.cloud</p><br>
+            <label>{{ nip_form.hex.label }} :</label><br>
+            {{ nip_form.hex }}
+            <div style="padding-bottom: 10px;"></div>
+            <p class="small">If you don't know your old-style hex key, use the <a href="{{url_for('home.key_converter')}}">key-converter</a> tool</p>
+            <button type="submit">save</button>
+        </form>
+
+        <div style="padding-bottom: 30px;"></div>
+        <h3 class="title">Lightning Address Forwarding :</h3>
+        <div style="padding-bottom: 30px;"></div>
+        <form method="POST" action="{{ url_for('dashboard.change_lnaddr') }}">
+            {{ lnaddr_form.hidden_tag() }}
+            <label>{{ lnaddr_form.username.label }} :</label><br>
+            {{ lnaddr_form.username }}<p style="display: inline;">@blackpill.cloud</p><br>
+            <label>{{ lnaddr_form.forward_to.label }} :</label><br>
+            {{ lnaddr_form.forward_to }}
+            <button type="submit">save</button>
+        </form>
+
+        <div style="padding-bottom: 30px;"></div>
+        <h3 class="title">Media uploaded :</h3>
+        <div style="padding-bottom: 30px;"></div>
+        {% if images %}
+        <div class="flex-container">
+            {% for image in images %}
+            <div class="flex-image">
+                <img src="{{url_for('media_uploader.get_media', path=image.path)}}" class="media" />
+                <p class="link small"><span>https://blackpill.cloud/m/{{image.path}}</span></p>
+                <a href="{{url_for('media_uploader.delete_media', path=image.path)}}"><button class="small">delete</button></a>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div style="padding-bottom: 30px;"></div>
+        <p>Nothing uploaded yet ! Check out the <a href="{{url_for('media_uploader.media')}}">Media Uploader</a></p>
+        <div style="padding-bottom: 30px;"></div>
+        {% endif %}
+
+    </main>
+</body>
+<script type="text/javascript" src="{{ url_for('static', filename='js/blackpill_logo.js') }}"></script>
+</html>

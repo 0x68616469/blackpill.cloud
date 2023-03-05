@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menu.css') }}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+    {% include 'include/nav.html' %}
+
+    <main>
+        {% include 'include/notifications.html' %}
+
+        <div class="menu account menu_active" style="z-index: 10;">
+            <img src="{{ url_for('static', filename='src/logo.svg') }}" class="logo-small" />
+            <h3 class="title">Login</h3>
+            <br>
+
+            <form method="POST" action="">
+                {{ form.hidden_tag() }}
+                <label>{{ form.username.label }} :</label>
+                {{ form.username }}
+                <label>{{ form.password.label }} :</label>
+                {{ form.password }}
+                <button type="submit">send</button>
+            </form>
+            <br>
+            <p class="text small"><a href="{{ url_for('auth.register') }}">Don't have an account? Sign Up</a></p>
+
+        </div>
+
+
+    </main>
+</body>
+<script type="text/javascript" src="{{ url_for('static', filename='js/blackpill_logo.js') }}"></script>
+</html>

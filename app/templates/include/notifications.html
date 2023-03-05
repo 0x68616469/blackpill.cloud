@@ -1,0 +1,69 @@
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+  <div class="notifications">
+    {% for category, message in messages %}
+    <p class="notification {{ category }}">{{ message }} <i onClick="closeNotification('{{loop.index}}')" class='bx bxs-x-square' ></i></p>
+    {% endfor %}
+  </div>
+  <script type="text/javascript">
+    var notif = document.getElementsByClassName("notification");
+    var closeNotification = function(value) {
+      notif[value-1].style.opacity = "0"
+      notif[value-1].addEventListener('transitionend', function(e) {
+        notif[value-1].style.display = "none"
+      });
+    };
+  </script>
+  <style>
+    .notifications {
+      position: absolute;
+      z-index: 200;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      margin: 10px;
+    }
+    
+    .notification {
+      font-size: 14px;
+      font-family: "Poppins", monospace;
+      margin: 10px;
+      padding: 10px;
+      background-color: var(--background-alt);
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      transition: opacity 1s; 
+      -webkit-transition: opacity 1s;  
+      -moz-transition: opacity 1s; 
+      box-shadow: 0 0 60px -15px black;
+      opacity: 1;
+      animation: fadeIn 1s;
+    }
+    
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    
+    .notification > i {
+      vertical-align: middle;
+    }
+    
+    .success {
+      border-left: 3px solid greenyellow;
+    }
+    
+    .warning {
+      border-left: 3px solid orangered;
+    }
+    
+    .error {
+      border-left: 3px solid red;
+    }
+  </style>
+  {% endif %}
+{% endwith %}

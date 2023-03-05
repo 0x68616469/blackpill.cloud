@@ -1,0 +1,248 @@
+@font-face { font-family: Poppins; src: url('../fonts/Poppins-Medium.ttf'); } 
+@font-face { font-family: Poppins-bold; src: url('../fonts/Poppins-Bold.ttf'); } 
+
+:root{
+	--background: #101012;
+    --background-alt: #1d1f20;
+    --white: #F0F7F4;
+	--primary: #70ABAF;
+	--secondary: #99E1D9;
+	--third: #ffd6ba;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    position: relative;
+    font-weight: 400;
+    list-style-type: none;
+    font-style: normal;
+}
+
+body {
+    background-color: #101012;
+    min-height: 100vh;
+}
+
+main {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px;
+    max-width: 900px;
+    text-align: center;
+    font-family: "Poppins", monospace;
+    color: var(--white);
+    word-wrap: break-word;
+}
+
+.logo {
+    margin: 30px;
+    width: 130px;
+}
+
+.logo-small {
+    margin: 15px;
+    width: 60px;
+}
+
+.title {
+    color: var(--third);
+}
+
+h1,h2,h3 {
+    font-family: "Poppins-Bold", monospace;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+p > a {
+    color: var(--secondary);
+    text-decoration: none;
+}
+
+p > a:hover {
+    color: var(--primary);
+    text-decoration: underline;
+}
+
+span {
+    color: var(--primary);
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    align-content: stretch;
+    width: 100%;
+    gap: 30px;
+}
+
+.flex-image {
+    width: 200px;
+}
+
+.flex-image > h3 {
+    color: var(--primary);
+}
+
+.flex-service {
+    width: 300px;
+    min-height: 200px;
+
+    background-color: var(--background);
+    
+    border-radius: 20px;
+    border: 1px solid var(--white);
+
+    -webkit-box-shadow: 0px 0px 0px 3px var(--background), 0px 0px 0px 4px var(--white); 
+    box-shadow: 0px 0px 0px 3px var(--background), 0px 0px 0px 4px var(--white);
+
+    padding: 20px;
+
+    display: block;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: auto;
+    align-self: auto;
+    order: 0;
+}
+
+.flex-service > i {
+    font-size: 90px;
+}
+
+.flex-service > p {
+    font-size: 14px;
+}
+
+.flex-user {
+    width: 400px;
+    background-color: var(--background-alt);
+    border-radius: 20px;
+    padding: 20px;
+    display: block;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: auto;
+    align-self: auto;
+    order: 0;
+    box-shadow: 0 0 60px -15px black;
+}
+
+.media {
+    width: 150px;
+}
+
+.rules {
+    text-align: left;
+    margin: auto;
+    max-width: 300px;
+    font-size: 13px;
+}
+
+.rules > li, .rules > ol > li{
+    list-style: circle;
+    padding-bottom: 10px;
+}
+
+.rules > ol > li {
+    margin-left: 20px;
+}
+
+.rules > .sub {
+    color: var(--primary);
+    list-style: none;
+}
+
+p.small {
+    font-size: 10px;
+}
+
+span.small {
+    font-size: 10px;
+}
+
+.invoice, .key {
+    color: var(--primary);
+    font-size: 10px;
+    max-width: 300px;
+    margin: auto;
+}
+
+form > label {
+    font-size: 13px;
+    color: var(--white);
+}
+
+form > input {
+    max-width: 200px;
+    padding: 8px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    background-color: var(--background);
+    border: none;
+    color: var(--white);
+    border-bottom: 2px solid var(--white);
+}
+
+form > input:focus {
+    border-bottom: 2px solid var(--third);
+    outline: none;
+}
+
+form > button {
+    margin: 10px auto;
+    display: block;
+    font-size: 20px;
+    --c: var(--white);
+    --back: var(--background);
+}
+
+/* Button from https://codepen.io/t_afif/pen/VwxbdpV */
+
+button {
+    --b: 1px;   /* border thickness */
+    --s: .16em; /* size of the corner */
+    --c: var(--third);
+    --back: rgba(0,0,0,0);
+    
+    padding: calc(.05em + var(--s)) calc(.3em + var(--s));
+    color: var(--c);
+    --_p: var(--s);
+    background:
+    conic-gradient(from 90deg at var(--b) var(--b),var(--back) 90deg,var(--c) 0)
+    var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
+    transition: .3s linear, color 0s, background-color 0s;
+    outline: var(--b) solid var(--back);
+    outline-offset: .2em;
+}
+
+button:hover,
+button:focus-visible{
+    --_p: 0px;
+    outline-color: var(--c);
+    outline-offset: .05em;
+}
+
+button:active {
+    background: var(--c);
+    color: var(--back);
+}
+
+button {
+    font-size: 30px;
+    cursor: pointer;
+    border: none;
+    margin: .1em;
+}
+
+button.small {
+    font-size: 20px;
+}

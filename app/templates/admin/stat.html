@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stats-Admin</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menu.css') }}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+<body>
+
+    {% include 'include/nav.html' %}
+    {% include 'include/account.html' %}
+    
+    <main>
+        {% include 'include/notifications.html' %}
+        <img src="{{ url_for('static', filename='src/logo.svg') }}" class="logo-small" />
+        <h1 class="title">Admin Stats</h1>
+        <div style="padding-bottom: 30px;"></div>
+
+        <p>
+            Nip count : {{number_nip}} <br>
+            User count : {{number_user}} <br>
+            Member count : {{number_member}} <br>
+            Image count : {{number_image}} <br>
+            Invoice count : {{number_invoice}} <br>
+            Lnaddr count : {{number_lnaddr}} <br>
+        </p>
+
+        <div class="flex-container">
+        {% for user in users %}
+
+            <div class="flex-user">
+                <h3 class="title">{{user.username}}</h3>
+                <p><span>#{{user.id}} {%if user.is_member %}- <i class='bx bx-badge-check' ></i>{%endif%}</span></p>
+                <div style="padding-bottom: 10px;"></div>
+                {% if user.nip %}
+                <br>
+                <p>NIP-05 : <span>{{user.nip.username}}@blackpill.cloud</span></p>
+                <p>Hex public key : <span class="key">{{user.nip.hex}}</span></p>
+                {% endif %}
+
+                {% if user.lnaddr %}
+                <br>
+                <p>Lightning Address : <span>{{user.lnaddr.username}}@blackpill.cloud</span></p>
+                <p>Forward to : <span>{{user.lnaddr.forward_to}}</span></p>
+                {% endif %}
+
+                <br>
+                <p>Image : {{user.number_of_image}}</p>
+                <p>Image total size : {{user.size_of_images}} Mb</p>
+                <p><a href="">List images</a></p>
+
+                <div style="padding-bottom: 20px;"></div>
+            </div>
+            {% endfor %}
+        </div>
+        <div style="padding-bottom: 20px;"></div>
+
+    </main>
+</body>
+<script type="text/javascript" src="{{ url_for('static', filename='js/blackpill_logo.js') }}"></script>
+</html>

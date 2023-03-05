@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rules</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menu.css') }}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+<body>
+
+    {% include 'include/nav.html' %}
+    {% include 'include/account.html' %}
+    
+    <main>
+        {% include 'include/notifications.html' %}
+        <img src="{{ url_for('static', filename='src/logo.svg') }}" class="logo-small" />
+        <h1 class="title">Rules</h1>
+        <div style="padding-bottom: 30px;"></div>
+        <p>Your usage of our services implies accepting these rules, including all further changes.<br>These changes might be done at any time without notice, it is your responsibility to check for them.</p><br>
+        <p>Here is a list of rules associated with our services :</p>
+        <div style="padding-bottom: 20px;"></div>
+        <ul class="rules">
+            <li>Refunds may be provided at our discretion. All payments are final.</li>
+            <li>An identifier or access to our services may get suspended if it violates one of the following:</li>
+            
+            <li>No vulgar, offensive, or sexually explicit NIP-05 ID, username, or lightning address.</li>
+            <li>No vulgar, offensive, illegal, spam, harassment, or sexually explicit uploaded content or post on the BlackPill's relay.</li>
+
+            <li>Moderators reserve the right to use their discretion regardless of any rule.</li>
+        </ul>
+        <p>We reserve the right to suspend accounts at any time with or without notice.<br>If you think someone is in the suspension of these policies please contact us at report@blackpill.cloud.</p>
+    </main>
+</body>
+<script type="text/javascript" src="{{ url_for('static', filename='js/blackpill_logo.js') }}"></script>
+</html>

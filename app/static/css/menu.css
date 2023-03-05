@@ -1,0 +1,168 @@
+.preload {
+    transition: none !important;
+}
+
+.menu {
+    line-height: 1.4;
+    font-family: "Poppins", monospace;
+    background: var(--background-alt);
+    padding: 25px 35px;
+    width: 300px;
+    position: fixed;
+    top: calc(50vh - 250px);
+    left: calc(50vw - 150px);
+    border-radius: 16px;
+    -moz-box-shadow: 0 0 70px -20px black;
+    -webkit-box-shadow: 0 0 70px -20px black;
+    box-shadow: 0 0 70px -20px black;
+    font-size: 18px;
+    z-index: 101;
+    transition: all 0.50s;
+    transform: scale(0);
+}
+
+.menu-scrollable {
+    max-height: 500px;
+    overflow-y: scroll;
+}
+
+.menu-overflow {
+    display: none;
+    position: fixed;
+    bottom: 0px;
+    right: 35px;
+    cursor: pointer;
+    font-size: 20px;
+    color: var(--white);
+    transition: all 0.2s;
+    z-index: 104;
+}
+
+.menu-overflow:hover {
+    border-bottom: 2px dotted var(--white);
+    padding-bottom: 5px;
+}
+
+.menu.menu_active {
+    transform: scale(1);
+}
+
+.menu > ol > li {
+    margin: 20px 0;
+    color: var(--secondary);
+}
+
+.menu > ol > .active, .menu > ol > li > ol > .active {
+    color: var(--third);
+}
+
+.menu > ol > li > ol {
+    margin: 10px 0 0 20px;
+    border-left: 1px solid #4d4d4c;
+    color: var(--primary);
+}
+
+.menu > ol > li > ol > li {
+    margin: 7px 0;
+    padding-left: 20px;
+}
+
+.menu a:hover {
+    color: var(--white);
+}
+
+.menu > .text {
+    margin: 20px 0;
+    color: var(--third);
+}
+
+.menu > .small {
+    font-size: 13px;
+    color: var(--white);
+}
+
+.menu > form > label {
+    font-size: 13px;
+    color: var(--white);
+}
+
+.menu > form > input {
+    width: 100%;
+    padding: 8px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    background-color: var(--background-alt);
+    border: none;
+    color: var(--white);
+    border-bottom: 2px solid var(--white);
+}
+
+.menu > form > input:focus {
+    border-bottom: 2px solid var(--third);
+    outline: none;
+}
+
+.menu > form > button {
+    margin: 10px auto;
+    display: block;
+    font-size: 20px;
+    --c: var(--white);
+    --back: var(--background-alt);
+}
+
+.menu-close {
+    font-family: "Poppins", monospace;
+    float: right;
+    cursor: pointer;
+    font-size: 16px;
+    color: var(--white);
+    transition: all 0.2s;
+    z-index: 104;
+}
+
+.menu-close:hover {
+    border-bottom: 2px dotted var(--white);
+    padding-bottom: 5px;
+}
+
+.nav-open {
+    text-shadow: 0px 0px 5px #101012;
+    position: fixed;
+    font-family: "Poppins", monospace;
+    font-size: 20px;
+    color: var(--white);
+    top: 15px;
+    left: 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+    z-index: 100;
+}
+.nav-open:hover {
+    border-bottom: 6px dotted var(--white);
+    padding-bottom: 10px;
+}
+
+.nav-open > i {
+    vertical-align: middle;
+}
+
+.account-open {
+    text-shadow: 0px 0px 5px #101012;
+    position: fixed;
+    font-family: "Poppins", monospace;
+    font-size: 20px;
+    color: var(--white);
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+    transition: all 0.3s;
+    z-index: 100;
+}
+.account-open:hover {
+    border-bottom: 6px dotted var(--white);
+    padding-bottom: 10px;
+}
+
+.account-open > i {
+    vertical-align: middle;
+}

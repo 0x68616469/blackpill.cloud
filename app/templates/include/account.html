@@ -1,0 +1,37 @@
+<p class="account-open" onclick="document.getElementById('account').classList.add('menu_active')"><i class='bx bx-user-circle'></i> {% if current_user.is_authenticated%}{{current_user.username}}{% else %}Account{% endif %}</p>
+    
+<div id="account" class="preload menu-scrollable menu account">
+    <p class="menu-close" onclick="document.getElementById('account').classList.remove('menu_active')"><i class='bx bxs-x-square' ></i></p>
+    {% if current_user.is_authenticated %}
+        <p class="text">Hey {{current_user.username}} 🤙🏻</p>
+        {% if current_user.is_member %}
+            <p class="text"><a href="{{ url_for('dashboard.dashboard_page') }}">Dashboard</a></p>
+        {% else %}
+            <p class="text small">To use the services of BlackPill, you must become a member:</p>
+            <p class="text"><a href="{{ url_for('membership.membership_page') }}">Become a member</a></p>
+        {% endif %}
+        <p class="text small">-- or --</p>
+        <p class="text"><a href="{{ url_for('auth.logout') }}">Logout</a></p>
+
+    {% else %}
+        <p class="text">Hello there ! 👋🏻</p>
+        <p class="text small">To use the services of BlackPill, you must login and become a member:</p>
+        <p class="text"><a href="{{ url_for('auth.login') }}">Login</a></p>
+        <p class="text small">-- or --</p>
+        <p class="text"><a href="{{ url_for('auth.register') }}">Register</a></p>
+    {% endif %}
+    <a href="#endnav"><p id="overflow" class="menu-overflow"><i class='bx bxs-down-arrow-alt'></i></p></a>
+    <div id="endnav"></div>
+</div>
+
+<script type="text/javascript">
+    menu_account = document.getElementById("account");
+
+    if(menu_account.scrollHeight > menu_account.clientHeight || menu_account.scrollWidth > menu_account.clientWidth){
+        document.getElementById('account').style.display = "unset";
+    }
+    setTimeout(
+        function() {
+        document.getElementById('account').classList.remove("preload");
+    }, 100);
+</script>

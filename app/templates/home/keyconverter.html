@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Key Converter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menu.css') }}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+
+    {% include 'include/nav.html' %}
+    {% include 'include/account.html' %}
+
+    <main>
+        {% include 'include/notifications.html' %}
+
+        <div class="menu account menu_active" style="z-index: 10;">
+            <img src="{{ url_for('static', filename='src/logo.svg') }}" class="logo-small" />
+            <h3 class="title">Key Converter</h3>
+            <br>
+
+            <form method="" action="">
+                <label>Put your Nostr public key here :</label>
+                <input id="pub-key" type="text" placeholder="npub.."/>
+                <input id="hex-key" type="text" placeholder="here will be your hex key"/>
+                <button id="copyButton">Copy hex key</button>
+            </form>
+            <br>
+            <script type="text/javascript">
+                function copyInvoice() {
+                    var copyButton = document.getElementById("copyButton");
+                    var copyText = document.getElementById("hex-key");
+                    navigator.clipboard.writeText(copyText.innerText);
+                    copyButton.innerText= "Copied";
+                  }
+            </script>
+        </div>
+
+        <script type="text/javascript" src="{{ url_for('static', filename='js/keyconverter.js') }}"></script>
+    </main>
+</body>
+<script type="text/javascript" src="{{ url_for('static', filename='js/blackpill_logo.js') }}"></script>
+</html>
