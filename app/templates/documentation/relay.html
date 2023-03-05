@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relay - Doc</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='src/favicon.png') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menu.css') }}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+<body>
+
+    {% include 'include/nav.html' %}
+    {% include 'include/account.html' %}
+    
+    <main>
+        {% include 'include/notifications.html' %}
+        <img src="{{ url_for('static', filename='src/logo.svg') }}" class="logo-small" />
+        <h1 class="title">Relay - Documentation</h1>
+        <div style="padding-bottom: 30px;"></div>
+
+        <p>
+            "<i>Relays are like the backend servers for Nostr. They allow Nostr clients to send them messages, 
+            and they may (or may not) store those messages and broadcast those messages to all other connected clients.</i>"
+            <br><br>
+            BlackPill offer you a private relay to send your notes and talk with others BlackPill's member!
+            <br>A private relay is a great way to make sure that your notes are always available.
+            <br><br><code>/!\ Every user will be whitelisted at midnight every day until we find a way to automate this.</code>
+            <br><br>
+            Here are some information on the relay/server:
+            <br><strong>URL:</strong> wss://relay.blackpill.cloud
+            
+            <br><strong>RAM:</strong> 16 gb
+            <br><strong>CPU:</strong> AMD Ryzen 5 1600X Six-Core Processor
+            <br><strong>SSD:</strong> 1 Tb
+            <br><strong>Save notes:</strong> Forever
+            <br><strong>Rules:</strong> <a href="{{url_for('home.rules')}}">rules</a>
+        </p>
+
+        <div style="padding-bottom: 20px;"></div>
+
+    </main>
+</body>
+<script type="text/javascript" src="{{ url_for('static', filename='js/blackpill_logo.js') }}"></script>
+</html>

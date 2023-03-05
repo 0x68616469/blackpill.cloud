@@ -44,6 +44,7 @@ def membership_page():
     
     context = {
         "invoice":invoice,
+        "price":settings["price"],
     }
     return render_template('membership/membership.html', **context)
 

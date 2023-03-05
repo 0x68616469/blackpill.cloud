@@ -13,7 +13,8 @@
         {% else %}
         <li class="menu-item {% if request.path == url_for('membership.membership_page') %}active{%endif%}"><a href="{{url_for('membership.membership_page')}}">Become a member</a></li>
         {% endif %}
-        <li class="menu-item {% if request.path == url_for('home.explore') %}active{%endif%}"><a href="{{url_for('home.explore')}}">Explore</a></li>
+        <li class="menu-item {% if request.path.startswith(url_for('home.explore')) %}active{%endif%}"><a href="{{url_for('home.explore')}}">Explore</a></li>
+        <li class="menu-item {% if request.path.startswith(url_for('documentation.documentation_page')) %}active{%endif%}"><a href="{{url_for('documentation.documentation_page')}}">Documentation</a></li>
         <li class="menu-item">
             <a href="{{url_for('home.home_page')}}">Tools</a>
             <ol class="sub-menu">

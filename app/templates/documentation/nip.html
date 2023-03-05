@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact</title>
+    <title>NIP-05 - Doc</title>
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='src/favicon.png') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/menu.css') }}">
@@ -19,10 +19,16 @@
     <main>
         {% include 'include/notifications.html' %}
         <img src="{{ url_for('static', filename='src/logo.svg') }}" class="logo-small" />
-        <h1 class="title">Contact</h1>
+        <h1 class="title">NIP-05 - Documentation</h1>
         <div style="padding-bottom: 30px;"></div>
 
-        <p>You can contact us over Nostr : blackpill@blackpill.cloud or npub: <span class="key">npub12ra2yn7h8jywxkyyd7u5207d5gqhrsghjn07mhxctmxgsfqvax3sj67dck</span></p>
+        <p>
+            <strong>NIP-05</strong> is a human-readable identifier for your public key.
+            <br>Your friends and followers will find your profile on Nostr easier & quicker and it will also provide you with a verified checkmark on most of the Nostr clients.
+            <br><br>If you are a BlackPill's member, to set-up your BlackPill's NIP-05 go to your <a href="{{url_for('dashboard.dashboard_page')}}">dashboard</a> and click on "edit".
+            <br><br>(INFO): Put your <strong>hex public key</strong> and not your nostr public key (npub), to convert those, go to the <a href="{{url_for('home.key_converter')}}">key converter</a> tool.
+        </p>
+
         <div style="padding-bottom: 20px;"></div>
 
     </main>

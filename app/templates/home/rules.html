@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rules</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='src/favicon.png') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/menu.css') }}">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -32,7 +33,7 @@
 
             <li>Moderators reserve the right to use their discretion regardless of any rule.</li>
         </ul>
-        <p>We reserve the right to suspend accounts at any time with or without notice.<br>If you think someone is in the suspension of these policies please contact us at report@blackpill.cloud.</p>
+        <p>We reserve the right to suspend accounts at any time with or without notice.<br>If you think someone is in the suspension of these policies please contact us at <a href="{{url_for('home.contact')}}">blackpill@blackpill.cloud</a>.</p>
     </main>
 </body>
 <script type="text/javascript" src="{{ url_for('static', filename='js/blackpill_logo.js') }}"></script>

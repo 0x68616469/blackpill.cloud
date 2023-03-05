@@ -10,6 +10,7 @@ from .dashboard.views import dashboard
 from .home.views import home
 from .media_uploader.views import media_uploader
 from .membership.views import membership
+from .documentation.views import documentation
 
 def create_app():
     app = Flask(__name__)
@@ -43,5 +44,6 @@ def create_app():
     app.register_blueprint(home)
     app.register_blueprint(media_uploader)
     app.register_blueprint(membership)
+    app.register_blueprint(documentation)
 
     return app
